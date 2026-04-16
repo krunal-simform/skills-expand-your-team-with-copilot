@@ -472,6 +472,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Escape a string for safe use in HTML attributes
+  function escapeHtml(str) {
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  // Build the plain-text share message for an activity
+  function buildShareMessage(name, description) {
+    return `Check out "${name}" at Mergington High School! ${description}`;
+  }
+
+  // Function to generate share buttons HTML for an activity
+  function buildShareButtonsHtml(name, description) {
+    const shareText = encodeURIComponent(
+      buildShareMessage(name, description)
+    );
+    const pageUrl = encodeURIComponent(window.location.href);
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=${pageUrl}`;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+
+    const safeName = escapeHtml(name);
+    const safeDescription = escapeHtml(description);
+
+    return `
+      <div class="share-buttons">
+        <span class="share-label">Share:</span>
+        <a class="share-btn share-twitter" href="${twitterUrl}" target="_blank" rel="noopener noreferrer" title="Share on X (Twitter)" aria-label="Share on X (Twitter)">𝕏</a>
+        <a class="share-btn share-facebook" href="${facebookUrl}" target="_blank" rel="noopener noreferrer" title="Share on Facebook" aria-label="Share on Facebook">f</a>
+        <button class="share-btn share-copy" data-activity="${safeName}" data-description="${safeDescription}" title="Copy link" aria-label="Copy link to clipboard">🔗</button>
+      </div>
+    `;
+  }
+
   // Function to render a single activity card
   function renderActivityCard(name, details) {
     const activityCard = document.createElement("div");
@@ -568,6 +605,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         `
         }
+        ${buildShareButtonsHtml(name, details.description)}
       </div>
     `;
 
@@ -576,6 +614,21 @@ document.addEventListener("DOMContentLoaded", () => {
     deleteButtons.forEach((button) => {
       button.addEventListener("click", handleUnregister);
     });
+
+    // Add click handler for the copy-link share button
+    const copyButton = activityCard.querySelector(".share-copy");
+    if (copyButton) {
+      copyButton.addEventListener("click", () => {
+        const activityName = copyButton.dataset.activity;
+        const description = copyButton.dataset.description;
+        const shareText = `${buildShareMessage(activityName, description)}\n${window.location.href}`;
+        navigator.clipboard.writeText(shareText).then(() => {
+          showMessage("Link copied to clipboard!", "success");
+        }).catch(() => {
+          showMessage("Could not copy link. Please copy the page URL manually.", "error");
+        });
+      });
+    }
 
     // Add click handler for register button (only when authenticated)
     if (currentUser) {
