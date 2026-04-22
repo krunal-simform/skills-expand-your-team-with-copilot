@@ -621,6 +621,9 @@ footer {
   position: absolute;
   top: 10px;
   right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 #user-status {
@@ -667,4 +670,25 @@ footer {
 
 #logout-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+#dark-mode-toggle {
+  margin-right: 8px;
+  font-size: 1rem;
+  padding: 4px 10px;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  --background: #121212;
+  --surface: #1e1e2e;
+  --text-primary: #e0e0e0;
+  --text-secondary: #aaaaaa;
+  --border: #333355;
+  --border-light: #2a2a3e;
+  --border-focus: #444466;
+  --success-light: #1b3a1e;
+  --warning-light: #3a2e00;
+  --error-light: #3a1010;
+  --info-light: #0a2530;
 }
