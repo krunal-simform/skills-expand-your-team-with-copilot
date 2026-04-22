@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mergington High School Activities</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="calendar.css" />
   </head>
   <body>
     <header>
@@ -20,6 +21,10 @@
             <span id="display-name"></span>
             <button id="logout-button">Logout</button>
           </div>
+        </div>
+        <div id="view-toggle" class="view-toggle">
+          <button id="card-view-button" class="view-button active">Card View</button>
+          <button id="calendar-view-button" class="view-button">Calendar View</button>
         </div>
       </div>
     </header>
@@ -126,6 +131,11 @@
               <!-- Activities will be loaded here -->
               <p>Loading activities...</p>
             </div>
+
+            <div id="calendar-view" class="hidden">
+              <div id="calendar-container"></div>
+            </div>
+
             <div id="message" class="hidden message"></div>
           </div>
         </div>
@@ -188,5 +198,6 @@
     </div>
 
     <script src="app.js"></script>
+    <script src="calendar.js"></script>
   </body>
 </html>
