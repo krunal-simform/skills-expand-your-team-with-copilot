@@ -1,0 +1,32 @@
+{
+  "Soccer Practice": {
+    "description": "Team soccer practice for competitive team",
+    "max_participants": 20,
+    "participants": ["alice@example.com", "bob@example.com"],
+    "schedule_details": { "days": ["Monday", "Wednesday"], "start_time": "16:00", "end_time": "17:30" }
+  },
+  "Art Club": {
+    "description": "Open studio-style art time",
+    "max_participants": 15,
+    "participants": ["carol@example.com"],
+    "schedule_details": { "days": ["Tuesday"], "start_time": "15:30", "end_time": "17:00" }
+  },
+  "Robotics Team": {
+    "description": "Robotics team practice and build sessions",
+    "max_participants": 12,
+    "participants": ["dave@example.com", "eve@example.com"],
+    "schedule_details": { "days": ["Monday"], "start_time": "16:30", "end_time": "18:00" }
+  },
+  "Chess Club": {
+    "description": "Weekly chess club for all levels",
+    "max_participants": 30,
+    "participants": [],
+    "schedule_details": { "days": ["Wednesday"], "start_time": "16:00", "end_time": "17:00" }
+  },
+  "Morning Yoga": {
+    "description": "Before-school yoga and stretching",
+    "max_participants": 20,
+    "participants": ["frank@example.com"],
+    "schedule_details": { "days": ["Thursday"], "start_time": "07:00", "end_time": "08:00" }
+  }
+}

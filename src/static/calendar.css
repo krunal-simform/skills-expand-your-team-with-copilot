@@ -1,0 +1,16 @@
+/* Simple weekly calendar styles */
+.calendar-grid{display:flex;gap:8px;align-items:flex-start}
+.time-column{width:60px;display:flex;flex-direction:column}
+.time-label{height:40px;border-bottom:1px solid #eee;font-size:12px;padding:4px;color:#666}
+.days-wrapper{display:flex;flex:1;gap:8px}
+.day-column{flex:1;border:1px solid #eaeaea;background:#fafafa}
+.day-header{text-align:center;padding:6px 4px;border-bottom:1px solid #eaeaea;background:#fff;font-weight:600}
+.day-slot{position:relative;height:560px}
+.calendar-event{position:absolute;padding:6px;border-radius:4px;color:#fff;box-shadow:0 1px 2px rgba(0,0,0,0.08);overflow:hidden}
+.event-title{font-weight:700;font-size:12px}
+.event-time{font-size:11px;opacity:0.9}
+.hidden{display:none}
+/* view toggle */
+.view-toggle{display:flex;gap:6px;align-items:center;margin-left:16px}
+.view-button{padding:6px 8px;border:1px solid #ccc;background:#fff;border-radius:4px;cursor:pointer}
+.view-button.active{background:#1976d2;color:#fff;border-color:#1976d2}
